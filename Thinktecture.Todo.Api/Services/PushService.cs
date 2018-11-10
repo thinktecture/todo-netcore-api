@@ -21,7 +21,7 @@ namespace Thinktecture.Todo.Api.Services
         
         public void Register(PushSubscription subscription)
         {
-            if (!_subscriptions.Contains(subscription))
+            if (_subscriptions.All(s => s.Endpoint != subscription.Endpoint))
             {
                 _subscriptions.Add(subscription);
             }
@@ -43,7 +43,7 @@ namespace Thinktecture.Todo.Api.Services
             }
             catch (Exception)
             {
-                var index = _subscriptions.FindIndex(s => s == subscription);
+                var index = _subscriptions.FindIndex(s => s.Endpoint == subscription.Endpoint);
                 _subscriptions.RemoveAt(index);
             }
         }
