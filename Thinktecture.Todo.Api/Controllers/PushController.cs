@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Thinktecture.Todo.Api.Models;
 using Thinktecture.Todo.Api.Services;
 using WebPush;
@@ -22,7 +23,7 @@ namespace Thinktecture.Todo.Api.Controllers
         {
             _pushService.Register(new PushSubscription(subscription.Endpoint, subscription.Keys.P256DH, subscription.Keys.Auth));
             
-            return Ok(@"""ok""");
+            return Ok(JsonConvert.SerializeObject("ok"));
         }
 
         // POST notifyAll
@@ -48,7 +49,7 @@ namespace Thinktecture.Todo.Api.Controllers
         {
             _pushService.Clear();
             
-            return Ok(@"""Subscriptions cleared""");
+            return Ok(JsonConvert.SerializeObject("Subscriptions cleared"));
         }
     }
 }

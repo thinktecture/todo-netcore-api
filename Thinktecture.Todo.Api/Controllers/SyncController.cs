@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Thinktecture.Todo.Api.Services;
 
 namespace Thinktecture.Todo.Api.Controllers
@@ -29,7 +30,7 @@ namespace Thinktecture.Todo.Api.Controllers
         {
             _syncService.ResetItems();
            
-            return Ok(@"""Items cleared!""");
+            return Ok(JsonConvert.SerializeObject("Items cleared!"));
         }
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Thinktecture.Todo.Api.Controllers
 {
@@ -9,7 +10,7 @@ namespace Thinktecture.Todo.Api.Controllers
         // GET
         public IActionResult Index()
         {
-            return Ok(@"""API is up and running.""");
+            return Ok(JsonConvert.SerializeObject("API is up and running."));
         }
     }
 }
