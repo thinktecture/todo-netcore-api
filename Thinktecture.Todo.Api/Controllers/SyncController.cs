@@ -14,7 +14,6 @@ namespace Thinktecture.Todo.Api.Controllers
         public SyncController(SyncService syncService)
         {
             _syncService = syncService;
-            syncService.ResetItems();
         }
 
         // POST
